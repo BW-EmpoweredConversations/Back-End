@@ -10,7 +10,7 @@ const server = express()
 server.use(helment(), cors(), express.json())
 
 // routers
-// server.use('/api/auth', authRouter)
+server.use('/api/auth', authRouter)
 
 server.get('/api', (req, res) => {
     res.json({message: 'Hello World!'})
