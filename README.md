@@ -37,3 +37,47 @@
 |GET|`/api/conversations/:conversation_id`|get information about a message; requires authorization|
 |PUT|`/api/conversations/:conversation_id`|update a message; (only expiration datetime)|
 |DELETE|`/api/conversations/:conversation_id`|delete a sent message; (makes it expired)|
+
+## Examples
+#### /api/auth/register
+POST client payload:
+```json
+{
+	"email": "username@email.com",
+	"password": "password",
+	"name": "Name",
+	"phone_number": "555-555-5555"
+}
+```
+POST response.data:
+```json
+{
+    "user": {
+        "id": 1,
+        "email": "username@email.com",
+        "name": "Name",
+        "phone_number": "5555555555"
+    },
+    "authorization": "really.long.token"
+}
+```
+#### /api/auth/login
+POST client payload:
+```json
+{
+	"email": "username@email.com",
+	"password": "password"
+}
+```
+POST response.data:
+```json
+{
+    "user": {
+        "id": 1,
+        "email": "username@email.com",
+        "name": "Name",
+        "phone_number": "5555555555"
+    },
+    "authorization": "really.long.token"
+}
+```
