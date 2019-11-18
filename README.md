@@ -30,10 +30,9 @@
 |DELETE|`/api/users/:user_id`|delete a user account; requires authorization|
 |&nbsp;|||
 |GET|`/api/users/:user_id/conversations`|get user's sent messages; requires authorization|
-|POST|`/api/users/:user_id/conversations`|send a new message|
+|POST|`/api/users/:user_id/conversations`|create/send a new message|
 |&nbsp;|||
+|POST|`/api/conversations`|search for matching conversation; requires `name` and `code`|
 |GET|`/api/conversations/:conversation_id`|get information about a message; requires authorization|
 |PUT|`/api/conversations/:conversation_id`|update a message; (only expiration datetime)|
 |DELETE|`/api/conversations/:conversation_id`|delete a sent message; (makes it expired)|
-|&nbsp;|||
-|GET|`/api/conversations?conv=:unique_message_token`|get information about a message|
