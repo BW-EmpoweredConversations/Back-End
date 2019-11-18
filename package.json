@@ -1,10 +1,11 @@
 {
   "name": "back-end",
   "version": "1.0.0",
-  "description": "|Field|Type|Notes|\r |--|--|--------|\r |id|integer|*primary key* and *autoincrements*|\r |email|string|*required* and *unique*|\r |password|string|*required*|\r |name|string|*required*|\r |phone_number|string|*required*|",
+  "description": "backend for Empowered Conversations",
   "main": "index.js",
   "scripts": {
-    "server": "nodemon index.js"
+    "server": "nodemon index.js",
+    "start": "node index.js"
   },
   "repository": {
     "type": "git",
