@@ -15,7 +15,8 @@
 |id|integer|*primary key* and *autoincrements*|
 |name|string|*required*; name of the recipient|
 |phone_number|string|*required*; phone number of the recipient|
-|expiration_date|datetime|*required*; defaults to 24 hours after sending|
+|created_at|datetime|defaults to time of sending|
+|expires_in|string|defaults to `24h`; uses [zeit/ms](https://github.com/zeit/ms) format|
 |user_id|integer|*foreign key* and *required*; id of the user that made the request|
 
 ## API
