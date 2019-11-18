@@ -20,6 +20,7 @@
 |user_id|integer|*foreign key* and *required*; id of the user that made the request|
 
 ## API
+Base Url: https://empoweredconversations.herokuapp.com
 #### Table of Contents
 |Type|Path|Notes|
 |--|--|--------|
