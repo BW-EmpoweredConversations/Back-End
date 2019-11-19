@@ -118,6 +118,8 @@ router.post('/:id/conversations', valUserAuth, (req, res) => {
     userModel.findUserNoAuth({id})
         .then(user => {
             if (user) {
+                // TODO: SEND SMS
+
                 userModel.addUserConv(id, {name, phone_number})
                     .then(conv => {
                         // convert created_at + expires_in to expires
