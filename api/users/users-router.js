@@ -53,3 +53,21 @@ router.put('/:id', valUserAuth, (req, res) => {
         })
 })
 
+router.delete('/:id', valUserAuth, (req, res) => {
+    const id = Number(req.params.id)
+    
+    userModel.findUserNoAuth({id})
+        .then(user => {
+            if (user) {
+                userModel.deleteUser(id)
+                    .then(() => {
+                        res.sendStatus(204)
+                    })
+            }
+            else res.sendStatus(404)
+        })
+        .catch(err => {
+            console.error(err)
+            res.sendStatus(500)
+        })
+})

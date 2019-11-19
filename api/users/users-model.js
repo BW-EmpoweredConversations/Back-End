@@ -4,6 +4,7 @@ module.exports = {
     findUser,
     findUserNoAuth,
     updateUser,
+    deleteUser,
 }
 
 function findUser(filter) {
@@ -19,7 +20,11 @@ function findUserNoAuth(filter) {
 function updateUser(id, changes) {
     try {
         return db('users').where({id}).update(changes)
-            .then(resp => findUserNoAuth({id}))
+            .then(() => findUserNoAuth({id}))
     }
     catch (err) {throw err}
+}
+
+function deleteUser(id) {
+    return db('users').where({id}).del()
 }
