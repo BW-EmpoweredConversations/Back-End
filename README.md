@@ -1,4 +1,5 @@
 # Back-End
+
 ## Schema
 #### Users
 |Field|Type|Notes|
@@ -21,6 +22,14 @@
 
 ## API
 Base Url: https://empoweredconversations.herokuapp.com
+
+test account:
+```json
+{
+    "email": "tester@email.com",
+    "password": "password"
+}
+```
 #### Table of Contents
 |Type|Path|Notes|Example|
 |--|--|--------|-|
