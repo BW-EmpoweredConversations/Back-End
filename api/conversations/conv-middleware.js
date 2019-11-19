@@ -16,7 +16,7 @@ async function valUserIdAuth(req, res, next) {
     try {
         const conv = await convModel.findConvById(id)
         if (conv) res.locals.conv = conv
-        else return res.status(401).json({message: 'Invalid authorization header'})
+        else return res.sendStatus(404)
     }
     catch (err) {
         console.log(err)
