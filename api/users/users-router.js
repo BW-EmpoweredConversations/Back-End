@@ -71,3 +71,23 @@ router.delete('/:id', valUserAuth, (req, res) => {
             res.sendStatus(500)
         })
 })
+
+router.get('/:id/conversations', valUserAuth, (req, res) => {
+    const id = req.params.id
+    
+    userModel.findUserNoAuth({id})
+        .then(user => {
+            if (user) {
+                userModel.findUserConv(id)
+                    .then(arr => {
+                        res.json(arr)
+                    })
+            }
+            else res.sendStatus(404)
+        })
+        .catch(err => {
+            console.error(err)
+            res.sendStatus(500)
+        })
+})
+

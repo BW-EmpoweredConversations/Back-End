@@ -5,6 +5,7 @@ module.exports = {
     findUserNoAuth,
     updateUser,
     deleteUser,
+    findUserConv,
 }
 
 function findUser(filter) {
@@ -27,4 +28,8 @@ function updateUser(id, changes) {
 
 function deleteUser(id) {
     return db('users').where({id}).del()
+}
+
+function findUserConv(user_id) {
+    return db('conversations').where({user_id})
 }
