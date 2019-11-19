@@ -6,6 +6,7 @@ module.exports = {
     updateUser,
     deleteUser,
     findUserConv,
+    addUserConv,
 }
 
 function findUser(filter) {
@@ -32,4 +33,17 @@ function deleteUser(id) {
 
 function findUserConv(user_id) {
     return db('conversations').where({user_id})
+}
+
+function addUserConv(user_id, conv) {
+    return db('conversations').insert({...conv, user_id}, 'id')
+        .then(resp => {
+            const id = resp[0]
+            return findConv({id})
+        })
+}
+
+function findConv(filter) {
+    if (filter) return db('conversations').where(filter).first()
+    else return db('conversations')
 }
