@@ -26,7 +26,7 @@ Base Url: https://empoweredconversations.herokuapp.com
 |--|--|--------|-|
 |POST|`/api/auth/register`|register a new user|[link](#post-apiauthregister)|
 |POST|`/api/auth/login`|login a user|[link](#post-apiauthlogin)|
-|&nbsp;||||
+|&nbsp;|↓↓↓ **NOT YET IMPLEMENTED** ↓↓↓|||
 |GET|`/api/users/:user_id`|get user info; requires authorization|[link](#get-apiusersuser_id)|
 |PUT|`/api/users/:user_id`|update user info; requires authorization|[link](#put-apiusersuser_id)|
 |DELETE|`/api/users/:user_id`|delete a user account; requires authorization|[link](#delete-apiusersuser_id)|
@@ -83,6 +83,8 @@ response data:
 }
 ```
 #### GET /api/users/:user_id
+**NOT YET IMPLEMENTED**
+
 response data
 ```json
 {
@@ -93,6 +95,8 @@ response data
 }
 ```
 #### PUT /api/users/:user_id
+**NOT YET IMPLEMENTED**
+
 request data
 ```json
 {
@@ -109,11 +113,15 @@ response data
 }
 ```
 #### DELETE /api/users/:user_id
+**NOT YET IMPLEMENTED**
+
 response data
 ```
 no content
 ```
 #### GET /api/users/:user_id/conversations
+**NOT YET IMPLEMENTED**
+
 response data
 ```json
 [
@@ -134,6 +142,8 @@ response data
 ]
 ```
 #### POST /api/users/:user_id/conversations
+**NOT YET IMPLEMENTED**
+
 request data
 ```json
 {
@@ -152,6 +162,8 @@ response data
 }
 ```
 #### POST /api/conversations
+**NOT YET IMPLEMENTED**
+
 request data
 ```json
 {
@@ -167,6 +179,8 @@ response data
 }
 ```
 #### GET /api/conversations/:conversation_id
+**NOT YET IMPLEMENTED**
+
 response data
 ```json
 {
@@ -178,6 +192,8 @@ response data
 }
 ```
 #### PUT /api/conversations/:conversation_id
+**NOT YET IMPLEMENTED**
+
 request data
 ```json
 {
@@ -195,6 +211,8 @@ response data
 }
 ```
 #### DELETE /api/conversations/:conversation_id
+**NOT YET IMPLEMENTED**
+
 response data
 ```
 no content
