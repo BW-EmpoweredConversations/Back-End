@@ -41,7 +41,7 @@ Base Url: https://empoweredconversations.herokuapp.com
 
 ## Examples
 #### POST /api/auth/register
-POST client payload:
+request data:
 ```json
 {
 	"email": "username@email.com",
@@ -50,7 +50,7 @@ POST client payload:
 	"phone_number": "555-555-5555"
 }
 ```
-POST response.data:
+response data:
 ```json
 {
     "user": {
@@ -63,14 +63,14 @@ POST response.data:
 }
 ```
 #### POST /api/auth/login
-POST client payload:
+request data:
 ```json
 {
 	"email": "username@email.com",
 	"password": "password"
 }
 ```
-POST response.data:
+response data:
 ```json
 {
     "user": {
@@ -83,7 +83,7 @@ POST response.data:
 }
 ```
 #### GET /api/users/:user_id
-GET response.data
+response data
 ```json
 {
     "id": 1,
@@ -93,13 +93,13 @@ GET response.data
 }
 ```
 #### PUT /api/users/:user_id
-PUT client payload
+request data
 ```json
 {
     "phone_number": "(777)777-7777"
 }
 ```
-PUT response.data
+response data
 ```json
 {
     "id": 1,
@@ -109,12 +109,12 @@ PUT response.data
 }
 ```
 #### DELETE /api/users/:user_id
-DELETE response.data
+response data
 ```
 no content
 ```
 #### GET /api/users/:user_id/conversations
-GET response.data
+response data
 ```json
 [
     {
@@ -134,14 +134,14 @@ GET response.data
 ]
 ```
 #### POST /api/users/:user_id/conversations
-POST client payload
+request data
 ```json
 {
     "name": "Name",
     "phone_number": "888-888-8888"
 }
 ```
-POST response.data
+response data
 ```json
 {
     "id": 1,
@@ -152,14 +152,14 @@ POST response.data
 }
 ```
 #### POST /api/conversations
-POST client payload
+request data
 ```json
 {
     "name": "Name",
     "code": 1
 }
 ```
-POST response.data
+response data
 ```json
 {
     "id": 1,
@@ -167,7 +167,7 @@ POST response.data
 }
 ```
 #### GET /api/conversations/:conversation_id
-GET response.data
+response data
 ```json
 {
     "id": 1,
@@ -178,13 +178,13 @@ GET response.data
 }
 ```
 #### PUT /api/conversations/:conversation_id
-PUT client payload
+request data
 ```json
 {
     "expires": "2019-11-19T20:00:00.000Z",
 }
 ```
-POST response.data
+response data
 ```json
 {
     "id": 1,
@@ -195,7 +195,7 @@ POST response.data
 }
 ```
 #### DELETE /api/conversations/:conversation_id
-DELETE response.data
+response data
 ```
 no content
 ```
