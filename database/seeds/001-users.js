@@ -4,7 +4,7 @@ exports.seed = function(knex) {
   return knex('users').insert([
     {
       email: 'tester@email.com',
-      password: '$2y$15$nY47c1FNjxHIJsBduM1XYuE5/WggnAaf5pkgNp8utW91Oz2cmcJKi',
+      password: '$2b$15$I02hm1Y4PbJR6NIYev9Ct.JhKAfINkeqrMaSwPvCuyjwt7C7oUAfa',
       name: 'tester',
       phone_number: '5555555555'
     },
