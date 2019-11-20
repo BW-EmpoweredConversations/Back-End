@@ -3,27 +3,19 @@ const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
 
 const authModel = require('./auth-model')
+const { checkBody, checkStrings } = require('./auth-middleware')
+const { formatPhoneNumber } = require('./auth-utils')
 
 module.exports = router
 
-router.post('/register', async (req, res) => {
-
-    // check body
-    if (!req.body) return res.status(400).json({message: 'Missing content application/json'})
-
-    // check fields and types
-    for (let prop of ['email', 'password', 'name', 'phone_number']) {
-        if (!req.body[prop]) return res.status(400).json({message: 'Missing required property: ' + prop})
-
-        if (typeof req.body[prop] != 'string') return res.status(400).json({message: `Property ${prop} must be a string`})
-    }
+router.post('/register', checkBody, checkStrings(['email', 'password', 'name', 'phone_number']), async (req, res) => {
 
     // check email pattern
     if (!/\S+@\S+\.\S+/.test(req.body.email)) return res.status(400).json({message: `Property email did not match expected pattern. Pattern example: yourname@website.com`})
 
-    // check phone_number length
-    const phone_number = req.body.phone_number.replace(/\D/g,'')
-    if (phone_number.length < 10 || phone_number.length > 11) return res.status(400).json({message: `Property phone_number has the wrong number of digits. Pattern example: 555-555-5555`})
+    // check phone_number E.164 format
+    const phone_number = formatPhoneNumber(req.body.phone_number)
+    if (!phone_number) return res.status(400).json({message: `Property phone_number has the wrong number of digits. Pattern examples: 555-555-5555, +1-555-555-5555`})
 
     // check if email is unique
     const email = req.body.email
@@ -63,17 +55,7 @@ router.post('/register', async (req, res) => {
         })
 })
 
-router.post('/login', async (req, res) => {
-
-    // check body
-    if (!req.body) return res.status(400).json({message: 'Missing content application/json'})
-
-    // check fields and types
-    for (let prop of ['email', 'password']) {
-        if (!req.body[prop]) return res.status(400).json({message: 'Missing required property: ' + prop})
-
-        if (typeof req.body[prop] != 'string') return res.status(400).json({message: `Property ${prop} must be a string`})
-    }
+router.post('/login', checkBody, checkStrings(['email', 'password']), async (req, res) => {
 
     // check email pattern
     if (!/\S+@\S+\.\S+/.test(req.body.email)) return res.status(400).json({message: `Property email did not match expected pattern. Pattern example: yourname@website.com`})
