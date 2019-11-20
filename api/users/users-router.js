@@ -1,6 +1,10 @@
 const router = require('express').Router()
 const ms = require('ms')
 
+const accountSid = process.env.TWILIO_ACCOUNT_SID
+const authToken = process.env.TWILIO_AUTH_TOKEN
+const client = require('twilio')(accountSid, authToken)
+
 const userModel = require('./users-model')
 const { valUserAuth } = require('./users-middleware')
 
@@ -108,9 +112,10 @@ router.post('/:id/conversations', valUserAuth, (req, res) => {
         if (typeof req.body[prop] != 'string') return res.status(400).json({message: `Property ${prop} must be a string`})
     }
     
-    // check phone_number length
-    const phone_number = req.body.phone_number.replace(/\D/g,'')
-    if (phone_number.length < 10 || phone_number.length > 11) return res.status(400).json({message: `Property phone_number has the wrong number of digits. Pattern example: 555-555-5555`})
+    // check phone_number E.164 format
+    let phone_number = `+${req.body.phone_number.replace(/\D/g,'')}`
+    if (phone_number.length < 12) phone_number = phone_number.replace('+', '+1')
+    if (phone_number.length < 12 || phone_number.length > 16) return res.status(400).json({message: `Property phone_number has the wrong number of digits. Pattern examples: 555-555-5555, +1-555-555-5555`})
 
     const id = req.params.id
     const name = req.body.name
@@ -118,15 +123,35 @@ router.post('/:id/conversations', valUserAuth, (req, res) => {
     userModel.findUserNoAuth({id})
         .then(user => {
             if (user) {
-                // TODO: SEND SMS
-
-                userModel.addUserConv(id, {name, phone_number})
-                    .then(conv => {
-                        // convert created_at + expires_in to expires
-                        const {id, name, phone_number, user_id} = conv
-                        const expires = new Date(Date.parse(conv.created_at + ' Z') + ms(conv.expires_in)).toISOString()
-                        res.json({id, name, phone_number, expires, user_id})
-                    })
+                if (phone_number == '+15555555555') {
+                    // console.log('fake SMS')
+                    userModel.addUserConv(id, {name, phone_number})
+                        .then(conv => {
+                            // convert created_at + expires_in to expires
+                            const {id, name, phone_number, user_id} = conv
+                            const expires = new Date(Date.parse(conv.created_at + ' Z') + ms(conv.expires_in)).toISOString()
+                            res.json({id, name, phone_number, expires, user_id})
+                        })
+                }
+                else {
+                    // send SMS
+                    client.messages
+                        .create({
+                            body: 'Hello World! 2',
+                            from: '+12056066299',
+                            to: phone_number
+                        })
+                        .then(() => {
+                            // add to database
+                            userModel.addUserConv(id, {name, phone_number})
+                                .then(conv => {
+                                    // convert created_at + expires_in to expires
+                                    const {id, name, phone_number, user_id} = conv
+                                    const expires = new Date(Date.parse(conv.created_at + ' Z') + ms(conv.expires_in)).toISOString()
+                                    res.json({id, name, phone_number, expires, user_id})
+                                })
+                        })
+                }
             }
             else res.sendStatus(404)
         })
