@@ -32,5 +32,6 @@ function checkStrings(props) {
 
             if (typeof req.body[prop] != 'string') return res.status(400).json({message: `Property ${prop} must be a string`})
         }
+        next()
     }
 }

@@ -3,6 +3,7 @@ const db = require('../../database/database')
 module.exports = {
     findConv,
     findConvById,
+    findUserById,
     updateConv,
     deleteConv,
 }
@@ -14,6 +15,10 @@ function findConv(filter) {
 
 function findConvById(id) {
     return db('conversations').where({id}).first()
+}
+
+function findUserById(id) {
+    return db('users').where({id}).first()
 }
 
 function updateConv(id, changes) {
