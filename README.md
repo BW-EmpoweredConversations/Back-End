@@ -66,7 +66,7 @@ response data:
         "id": 1,
         "email": "username@email.com",
         "name": "Name",
-        "phone_number": "5555555555"
+        "phone_number": "+15555555555"
     },
     "authorization": "really.long.token"
 }
@@ -86,7 +86,7 @@ response data:
         "id": 1,
         "email": "username@email.com",
         "name": "Name",
-        "phone_number": "5555555555"
+        "phone_number": "+15555555555"
     },
     "authorization": "really.long.token"
 }
@@ -98,7 +98,7 @@ response data
     "id": 1,
     "email": "username@email.com",
     "name": "Name",
-    "phone_number": "5555555555"
+    "phone_number": "+15555555555"
 }
 ```
 #### PUT /api/users/:user_id
@@ -114,7 +114,7 @@ response data
     "id": 1,
     "email": "username@email.com",
     "name": "Name",
-    "phone_number": "7777777777"
+    "phone_number": "+17777777777"
 }
 ```
 #### DELETE /api/users/:user_id
@@ -129,14 +129,14 @@ response data
     {
         "id": 1,
         "name": "Name",
-        "phone_number": "5555555555",
+        "phone_number": "+15555555555",
         "expires": "2019-11-18T14:00:00.000Z",
         "user_id": 1
     },
     {
         "id": 2,
         "name": "Name",
-        "phone_number": "7777777777",
+        "phone_number": "+17777777777",
         "expires": "2019-11-19T18:00:00.000Z",
         "user_id": 1
     }
@@ -155,7 +155,7 @@ response data
 {
     "id": 1,
     "name": "Name",
-    "phone_number": "8888888888",
+    "phone_number": "+18888888888",
     "expires": "2019-11-18T14:00:00.000Z",
     "user_id": 1
 }
@@ -181,7 +181,7 @@ response data
 {
     "id": 1,
     "name": "Name",
-    "phone_number": "8888888888",
+    "phone_number": "+18888888888",
     "expires": "2019-11-18T14:00:00.000Z",
     "user_id": 1
 }
@@ -198,7 +198,7 @@ response data
 {
     "id": 1,
     "name": "Name",
-    "phone_number": "8888888888",
+    "phone_number": "+18888888888",
     "expires": "2019-11-19T20:00:00.000Z",
     "user_id": 1
 }
