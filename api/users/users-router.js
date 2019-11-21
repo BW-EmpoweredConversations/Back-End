@@ -11,6 +11,8 @@ const { formatPhoneNumber } = require('./users-utils')
 
 module.exports = router
 
+const website = process.env.FRONTEND_URL
+
 router.get('/:id', valUserAuth, (req, res) => {
     const id = req.params.id
     
@@ -110,7 +112,7 @@ router.post('/:id/conversations', checkBody, checkStrings(['name', 'phone_number
             await client.messages
             .create({
                 // TODO: ADD WEBSITE LINK
-                body: `Hello ${name}. ${user.name} is reaching out to you for a difficult conversation. Please read our advice at ${'website'}, and enter name: "${name}", and code: "${conv.id}" to let ${user.name} know you're ready.`,
+                body: `Hello ${name}. ${user.name} is reaching out to you for a difficult conversation. Please view our advice at ${website}, and enter name: "${name}", and code: "${conv.id}" to let ${user.name} know you're ready.`,
                 from: '+12056066299',
                 to: phone_number
             })
