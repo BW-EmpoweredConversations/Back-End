@@ -17,7 +17,7 @@ beforeAll( async () => {
 })
 
 describe.skip('/api/auth', () => {
-    describe('/register', () => {
+    describe('POST /register', () => {
 
         beforeEach(() => db('users').truncate())
 
@@ -66,7 +66,7 @@ describe.skip('/api/auth', () => {
         })
     })
 
-    describe('/login', () => {
+    describe('POST /login', () => {
 
         beforeEach(() => db('users').truncate())
 

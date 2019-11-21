@@ -6,7 +6,7 @@ beforeAll( async () => {
     await db('users').truncate()
 })
 
-describe('convModel', () => {
+describe.skip('convModel', () => {
     describe('findConv', () => {
 
         beforeEach( async () => {
