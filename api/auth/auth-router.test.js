@@ -11,7 +11,12 @@ server.use(express.json())
 
 server.use('/api/auth', require('./auth-router'))
 
-describe('/api/auth', () => {
+beforeAll( async () => {
+    await db('conversations').truncate()
+    await db('users').truncate()
+})
+
+describe.skip('/api/auth', () => {
     describe('/register', () => {
 
         beforeEach(() => db('users').truncate())

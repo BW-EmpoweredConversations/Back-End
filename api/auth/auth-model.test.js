@@ -1,7 +1,12 @@
 const db = require('../../database/database')
 const authModel = require('./auth-model')
 
-describe('authModel', () => {
+beforeAll( async () => {
+    await db('conversations').truncate()
+    await db('users').truncate()
+})
+
+describe.skip('authModel', () => {
     describe('addUser', () => {
 
         beforeEach(() => db('users').truncate())

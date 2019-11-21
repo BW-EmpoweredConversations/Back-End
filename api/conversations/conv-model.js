@@ -17,7 +17,7 @@ function findConv(filter) {
 function updateConv(id, changes) {
     try {
         return db('conversations').where({id}).update(changes)
-            .then(() => findConvById(id))
+            .then(() => findConv({id}))
     }
     catch (err) {throw err}
 }

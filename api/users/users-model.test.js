@@ -1,7 +1,12 @@
 const db = require('../../database/database')
 const usersModel = require('./users-model')
 
-describe('usersModel', () => {
+beforeAll( async () => {
+    await db('conversations').truncate()
+    await db('users').truncate()
+})
+
+describe.skip('usersModel', () => {
     describe('findUser', () => {
 
         beforeEach(() => db('users').truncate())
