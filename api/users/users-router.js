@@ -39,7 +39,7 @@ router.put('/:id', checkBody, checkStrings(['phone_number']), valUserAuth, async
         if (!user) return res.sendStatus(404)
 
         // update user
-        user = await userModel.updateUser(id, phone_number)
+        user = await userModel.updateUser(id, {phone_number})
         res.json(user)
     }
     catch (err) {
@@ -54,7 +54,7 @@ router.delete('/:id', valUserAuth, async (req, res) => {
     try {
         // check user exists
         const user = await userModel.findUserNoAuth({id})
-        if (!user) res.sendStatus(404)
+        if (!user) return res.sendStatus(404)
 
         // delete user
         await userModel.deleteUser(id)
@@ -72,7 +72,7 @@ router.get('/:id/conversations', valUserAuth, async (req, res) => {
     try {
         // check user exists
         const user = await userModel.findUserNoAuth({id})
-        if (!user) res.sendStatus(404)
+        if (!user) return res.sendStatus(404)
 
         // get user's conversations
         const arr = await userModel.findUserConv(id)
@@ -100,7 +100,7 @@ router.post('/:id/conversations', checkBody, checkStrings(['name', 'phone_number
     try {
         // check user exists
         const user = await userModel.findUserNoAuth({id})
-        if (!user) res.sendStatus(404)
+        if (!user) return res.sendStatus(404)
 
         // add new conversation
         const conv = await userModel.addUserConv(id, {name, phone_number})

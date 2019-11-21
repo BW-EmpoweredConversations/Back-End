@@ -6,7 +6,7 @@ beforeAll( async () => {
     await db('users').truncate()
 })
 
-describe.skip('authModel', () => {
+describe('authModel', () => {
     describe('addUser', () => {
 
         beforeEach(() => db('users').truncate())

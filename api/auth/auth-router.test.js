@@ -16,7 +16,7 @@ beforeAll( async () => {
     await db('users').truncate()
 })
 
-describe.skip('/api/auth', () => {
+describe('/api/auth', () => {
     describe('POST /register', () => {
 
         beforeEach(() => db('users').truncate())

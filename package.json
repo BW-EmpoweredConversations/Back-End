@@ -6,7 +6,9 @@
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js",
-    "test": "cross-env NODE_ENV=testing jest --watch --verbose"
+    "test-auth": "cross-env NODE_ENV=testing jest --verbose /api/auth",
+    "test-conv": "cross-env NODE_ENV=testing jest --verbose /api/conversations",
+    "test-users": "cross-env NODE_ENV=testing jest --verbose /api/users"
   },
   "repository": {
     "type": "git",
@@ -37,5 +39,8 @@
     "jest": "^24.9.0",
     "nodemon": "^1.19.4",
     "supertest": "^4.0.2"
+  },
+  "jest": {
+    "testEnvironment": "node"
   }
 }
