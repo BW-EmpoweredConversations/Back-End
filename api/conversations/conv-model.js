@@ -1,25 +1,23 @@
 const db = require('../../database/database')
 
+const {findUser} = require('../users/users-model')
+
 module.exports = {
     findConv,
-    findConvById,
+    findUser,
     updateConv,
     deleteConv,
 }
 
 function findConv(filter) {
-    if (filter) return db('conversations').where(filter)
+    if (filter) return db('conversations').where(filter).first()
     else return db('conversations')
-}
-
-function findConvById(id) {
-    return db('conversations').where({id}).first()
 }
 
 function updateConv(id, changes) {
     try {
         return db('conversations').where({id}).update(changes)
-            .then(() => findConvById(id))
+            .then(() => findConv({id}))
     }
     catch (err) {throw err}
 }

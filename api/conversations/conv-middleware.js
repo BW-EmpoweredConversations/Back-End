@@ -1,11 +1,14 @@
 const jwt = require('jsonwebtoken')
 
 const convModel = require('./conv-model')
+const { checkBody, checkStrings } = require('../users/users-middleware')
 
 const secret = process.env.SECRET || 'secret key'
 
 module.exports = {
     valUserIdAuth,
+    checkBody,
+    checkStrings
 }
 
 async function valUserIdAuth(req, res, next) {

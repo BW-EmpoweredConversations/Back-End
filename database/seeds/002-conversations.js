@@ -4,7 +4,7 @@ exports.seed = function(knex) {
   return knex('conversations').insert([
     {
       name: 'receiver',
-      phone_number: '5555555555',
+      phone_number: '+15555555555',
       user_id: 1
     },
   ]);

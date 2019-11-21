@@ -1,5 +1,7 @@
 const db = require('../../database/database')
 
+const { findConv } = require('../conversations/conv-model')
+
 module.exports = {
     findUser,
     findUserNoAuth,
@@ -36,14 +38,12 @@ function findUserConv(user_id) {
 }
 
 function addUserConv(user_id, conv) {
-    return db('conversations').insert({...conv, user_id}, 'id')
-        .then(resp => {
-            const id = resp[0]
-            return findConv({id})
-        })
-}
-
-function findConv(filter) {
-    if (filter) return db('conversations').where(filter).first()
-    else return db('conversations')
+    try {
+        return db('conversations').insert({...conv, user_id}, 'id')
+            .then(resp => {
+                const id = resp[0]
+                return findConv({id})
+            })
+    }
+    catch (err) {throw err}
 }
