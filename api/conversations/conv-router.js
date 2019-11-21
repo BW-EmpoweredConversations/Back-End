@@ -18,10 +18,10 @@ router.post('/', checkBody, checkStrings(['name']), async (req, res) => {
     const name = req.body.name
 
     try {
-        const [conv] = await convModel.findConv({id, name})
+        const conv = await convModel.findConv({id, name})
         if (!conv) return res.sendStatus(404)
 
-        const user = await convModel.findUserById(conv.user_id)
+        const user = await convModel.findUser({id: conv.user_id})
         if (!user) return res.sendStatus(404)
 
         // TODO: CHECK EXPIRATION
