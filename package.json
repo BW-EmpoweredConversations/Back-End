@@ -6,6 +6,7 @@
   "scripts": {
     "server": "nodemon index.js",
     "start": "node index.js",
+    "test": "npm run test-auth && npm run test-conv && npm run test-users",
     "test-auth": "cross-env NODE_ENV=testing jest --verbose /api/auth",
     "test-conv": "cross-env NODE_ENV=testing jest --verbose /api/conversations",
     "test-users": "cross-env NODE_ENV=testing jest --verbose /api/users"
