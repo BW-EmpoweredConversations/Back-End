@@ -1,12 +1,18 @@
 const db = require('../../database/database')
 
-const {findUser} = require('../users/users-model')
+// const { findUser } = require('../users/users-model')
+/*! cannot require from a file that requires this file */
 
 module.exports = {
     findConv,
     findUser,
     updateConv,
     deleteConv,
+}
+
+function findUser(filter) {
+    if (filter) return db('users').where(filter).first()
+    else return db('users')
 }
 
 function findConv(filter) {
